@@ -2,15 +2,15 @@ version: '2'
 
 services:
   db:
-    container_name: pizza-ranch-db
+    container_name: myapp-db
     image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: password
     volumes:
       - ./docker_volumes/mysql/:/var/lib/mysql
   web:
-    container_name: pizza-ranch-web
-    image: pizza-ranch-web:1
+    container_name: myapp-web
+    image: myapp-web:1
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
